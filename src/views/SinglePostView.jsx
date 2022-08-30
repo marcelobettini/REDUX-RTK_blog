@@ -7,7 +7,7 @@ import { fetchComments } from '../actions/commentsActions'
 import Post from '../components/Post'
 import Comment from '../components/Comment'
 
-const SinglePostPage = ({
+const SinglePostView = ({
   dispatch,
   post,
   comments,
@@ -53,4 +53,4 @@ const mapStateToProps = state => ({
   hasErrors: { post: state.post.hasErrors, comments: state.comments.hasErrors },
 })
 
-export default connect(mapStateToProps)(SinglePostPage)
+export default connect(mapStateToProps)(SinglePostView)
