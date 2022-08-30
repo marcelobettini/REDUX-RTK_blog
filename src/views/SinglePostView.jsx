@@ -1,13 +1,14 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
 import { fetchPost, postSelector } from '../slices/postSlice'
 import { fetchComments, commentsSelector } from '../slices/commentsSlice'
 
 import Post from '../components/Post'
 import Comments from '../components/Comments'
+import { useParams } from 'react-router-dom'
 
-const SinglePostView = ({ match }) => {
+const SinglePostView = () => {
+  const { id } = useParams()
   const dispatch = useDispatch()
   const { post, loading: postLoading, hasErrors: postHasErrors } = useSelector(
     postSelector
@@ -19,11 +20,9 @@ const SinglePostView = ({ match }) => {
   } = useSelector(commentsSelector)
 
   useEffect(() => {
-    const { id } = match.params
-
     dispatch(fetchComments(id))
     dispatch(fetchPost(id))
-  }, [dispatch, match])
+  }, [dispatch, id])
 
   const renderPost = () => {
     if (postLoading) return <p>Loading post...</p>
