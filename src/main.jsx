@@ -1,19 +1,17 @@
 // External imports
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import { createStore, applyMiddleware } from 'redux'
+import { configureStore } from '@reduxjs/toolkit'
 import { Provider } from 'react-redux'
-import thunk from 'redux-thunk'
-import { composeWithDevTools } from 'redux-devtools-extension'
 
 // Local imports
 import App from './App'
-import rootReducer from './reducers/main'
+import rootReducer from './slices/main'
 
 // Styling
 import './main.css'
 
-const store = createStore(rootReducer, composeWithDevTools(applyMiddleware(thunk)))
+const store = configureStore({ reducer: rootReducer })
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
