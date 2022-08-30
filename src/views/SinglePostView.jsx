@@ -5,9 +5,9 @@ import { fetchPost, postSelector } from '../slices/postSlice'
 import { fetchComments, commentsSelector } from '../slices/commentsSlice'
 
 import Post from '../components/Post'
-import Comment from '../components/Comment'
+import Comments from '../components/Comments'
 
-const SingleViewPage = ({ match }) => {
+const SinglePostView = ({ match }) => {
   const dispatch = useDispatch()
   const { post, loading: postLoading, hasErrors: postHasErrors } = useSelector(
     postSelector
@@ -37,7 +37,7 @@ const SingleViewPage = ({ match }) => {
     if (commentsHasErrors) return <p>Unable to display comments.</p>
 
     return comments.map(comment => (
-      <Comment key={comment.id} comment={comment} />
+      <Comments key={comment.id} comment={comment} />
     ))
   }
 
@@ -50,4 +50,4 @@ const SingleViewPage = ({ match }) => {
   )
 }
 
-export default SingleViewPage
+export default SinglePostView
