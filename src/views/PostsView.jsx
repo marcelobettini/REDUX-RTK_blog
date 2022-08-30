@@ -15,14 +15,14 @@ const PostsView = () => {
 
   const renderPosts = () => {
     if (loading) return <p>Loading posts...</p>
-    if (hasErrors) return <p>Unable to display posts.</p>
+    if (hasErrors) return <p>Something went South...</p>
 
     return posts.map(post => <Post key={post.id} post={post} excerpt />)
   }
 
   return (
     <section>
-      <h1>Posts</h1>
+      <h1>Articles Repository</h1>
       {renderPosts()}
     </section>
   )
